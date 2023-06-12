@@ -1,6 +1,7 @@
-Feature: Board functionality
+Feature: Ecommerce functionality
 
-  Scenario: Create a board
-    Given I am on empty home page
-    When I type and submit in the board name
-    Then I should be redirected to the board detail
+  Scenario: Ecommerce fill form
+    Given I open Ecommerce page
+    When I fill the form details
+    Then Validate the form behavior
+    Then Select the shop page

@@ -1,4 +1,9 @@
 import { When, Then, Given, Before } from "@badeball/cypress-cucumber-preprocessor";
+import Homepage from "../e2e/pageObjects/HomePage"
+import ProductPage from "../e2e/pageObjects/ProductPage"
+
+const homePage = new Homepage()
+const productPage = new ProductPage()
 
 let userdata;
 Before(function () {
@@ -8,14 +13,21 @@ Before(function () {
       })
   });
 
-Given("I am on empty home page", () => {
+Given('I open Ecommerce page', () => {
   cy.visit("/"+'/angularpractice/');
 });
 
-When("I type and submit in the board name", () => {
-    cy.get(':nth-child(1) > .form-control').should('have.attr', 'minlength', userdata.number);
+When('I fill the form details', () => {
+    homePage.getNameTextBox(userdata.name)
+    homePage.getGenderDropdown(userdata.gender)
 });
 
-Then("I should be redirected to the board detail", () => {
-    cy.title().should('have.value','ProtoCommerce');
+Then('Validate the form behavior', () => {
+    homePage.getNameTextBoxMinChar(userdata.number)
+    homePage.getDataBindingTextBox(userdata.name)
+    homePage.getEntrepenuerRadioButton()
 });
+
+Then('Select the shop page', () => {
+    homePage.getShopLink()
+})
