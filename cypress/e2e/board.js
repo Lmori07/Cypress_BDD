@@ -31,3 +31,23 @@ Then('Validate the form behavior', () => {
 Then('Select the shop page', () => {
     homePage.getShopLink()
 })
+
+When('I add items to Cart', () => {
+    //This is been held be the custom command create to select multiple products.
+    userdata.productName.forEach(function (element) {
+        cy.selectProduct(element)
+       });
+});
+
+Then('Validate the total prices', () => {
+    productPage.getSelectedProduct()
+    productPage.getTotalcheck()    
+})
+
+Then('Select the country submit and verify Thankyou', () => {
+    productPage.getCheckoutButton()
+})
+
+Then('I navigate to the shop page', () =>  {
+    homePage.getShopLink()
+})

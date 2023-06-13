@@ -19,9 +19,15 @@ async function setupNodeEvents(on, config) {
 }
 
 module.exports = defineConfig({
+
+  defaultCommandTimeout: 6000,
+  chromeWebSecurity: false,
+
+
   e2e: {
     baseUrl: "https://rahulshettyacademy.com",
     specPattern: "**/*.feature",
     setupNodeEvents,
+    projectId: "i9nzb8",
   },
 });

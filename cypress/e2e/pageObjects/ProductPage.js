@@ -5,7 +5,7 @@ class ProductPage {
     }
 
     getCheckoutButton(){
-        cy.get(':nth-child(4) > :nth-child(5) > .btn').click()
+        cy.get(':nth-child(5) > :nth-child(5) > .btn').click()
         cy.get('#country').type('United States of America')
         cy.get('.suggestions > ul > li > a').click()
         cy.get('#checkbox2').click({force: true})
@@ -38,7 +38,6 @@ class ProductPage {
             total = total[1].trim()
             expect(Number(total)).to.equal(sum)
         })
-
     }
 
 }
